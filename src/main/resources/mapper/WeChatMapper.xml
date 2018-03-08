@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cll.crawler.mapper.WeChatMapper">
+
+
+    <insert id="save" parameterType="arraylist">
+        INSERT INTO wechat(title,time,in_fans,scan,de_fans,add_fans,fans,send,`read`,open,share,cellect,
+        inner_open,his_read,fre_read,share_read,other_read,inner_share,fre_share,other_share)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.title},#{item.time},#{item.inFans},#{item.scan},#{item.deFans},#{item.addFans},#{item.fans},#{item.send},#{item.read},#{item.open},
+            #{item.share},#{item.cellect},#{item.innerOpen},#{item.hisRead},#{item.freRead},#{item.shareRead},#{item.otherRead},#{item.innerShare},
+            #{item.freShare},#{item.otherShare})
+        </foreach>
+    </insert>
+
+
+
+
+</mapper>

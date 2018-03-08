@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cll.crawler.mapper.JobMapper">
+
+
+
+
+    <update id="updateInfoById">
+        UPDATE job SET info=#{info} WHERE id=#{id}
+    </update>
+
+
+    <select id="isExist" resultType="java.lang.Integer">
+        SELECT count(*) FROM job WHERE id=#{id}
+    </select>
+
+
+    <insert id="save" parameterType="com.cll.crawler.entity.Job">
+        INSERT INTO job(id,click,company,place,
+        <if test="info != null and info != ''">
+            info,
+        </if>
+        time)VALUES (#{id},#{click},#{company},#{place},
+        <if test="info != null and info != ''">
+            #{info},
+        </if> #{time})
+    </insert>
+
+
+    <select id="count" resultType="int">
+        SELECT count(*) FROM job
+    </select>
+
+
+    <update id="updateById" parameterType="com.cll.crawler.entity.Job">
+        UPDATE job SET click=#{click},company=#{company},place=#{place},info=#{info}
+        WHERE id=#{id}
+    </update>
+
+    <update id="updateClickAndInfo">
+        UPDATE job SET click=#{click},info=#{info}
+        WHERE id=#{id}
+    </update>
+
+
+
+
+</mapper>

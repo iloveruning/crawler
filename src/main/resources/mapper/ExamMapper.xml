@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cll.crawler.mapper.ExamMapper">
+
+
+    <insert id="save" parameterType="com.cll.crawler.entity.Exam">
+        INSERT INTO exam(type,question, ans_a, ans_b, ans_c, ans_d,
+        <if test="ansE != null">
+            ans_e,
+        </if>
+        <if test="ansF != null">
+            ans_f,
+        </if>
+        answer)
+        VALUES (#{type},#{question},#{ansA},#{ansB},#{ansC},#{ansD},
+        <if test="ansE != null">
+            #{ansE},
+        </if>
+        <if test="ansF != null">
+            #{ansF},
+        </if>
+        #{answer})
+    </insert>
+
+
+
+
+
+</mapper>
